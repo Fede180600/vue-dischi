@@ -1,12 +1,12 @@
 <template>
     <div class="album_card">
         <div class="card_img">
-            <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
+            <img :src="album.poster" alt="">
         </div>
         <div class="album_description">
-            <h3>Nome Album</h3>
-            <p>Autore</p>
-            <p>year</p>
+            <h3>{{ album.title }}</h3>
+            <p>{{ album.author }}</p>
+            <p>{{ album.year }}</p>
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@
 <script>
 export default {
     name: "AppAlbum",
+    props: {
+        album: Object,
+    }
 }
 </script>
 

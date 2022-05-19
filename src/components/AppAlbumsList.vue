@@ -1,25 +1,31 @@
 <template>
     <section class="albums_list">
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
-        <AppAlbum />
+        <AppAlbum v-for="(card, index) in albums" :key="index" :album="card"/>
     </section>
 </template>
 
 <script>
 import AppAlbum from "./AppAlbum.vue";
+import axios from "axios";
+
 export default {
     name: "AppAlbumsList",
     components: {
         AppAlbum,
+    },
+    data: function() {
+        return {
+            albums: [],
+        };
+    },
+    created() {
+        axios
+        .get("https://flynn.boolean.careers/exercises/api/array/music")
+        .then((resp) => {
+            this.albums = resp.data.response;
+        });
     }
+
 }
 </script>
 
