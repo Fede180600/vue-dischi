@@ -8,7 +8,7 @@
             <div class="albums_list py-4">
                 <div class="container">
                     <div class="row row-cols-3 row-cols-md-6 justify-content-center">
-                        <AppAlbum v-for="(card, index) in userSelectedGenre" :key="index" :album="card"/>
+                        <AppAlbum v-for="(album, index) in userSelectedGenre" :key="index" :album="album"/>
                     </div>
                 </div>
             </div>
@@ -46,9 +46,9 @@ export default {
     },
     computed: {
         userSelectedGenre: function() {
-            const keyFormatted = this.select.value;
-            const selectedGenre = this.albums.filter((card) => {
-                return card.genre.includes(keyFormatted);
+            const keyFormatted = this.select;
+            const selectedGenre = this.albums.filter((album) => {
+                return album.genre.includes(keyFormatted);
             });
             console.log(keyFormatted);
             return selectedGenre;
