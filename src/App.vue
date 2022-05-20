@@ -28,8 +28,8 @@ export default {
 @import "./style/variables.scss";
 
 main {
-  height: calc(100% - 60px);
   background-color: $app-dark-gray;
-  position: relative;
+  overflow-y: auto;
+  height: calc(100% - 60px);
 }
 </style>

@@ -23,11 +23,9 @@ export default {
 <style lang="scss" scoped>
 @import "../style/variables.scss";
 .album_card {
-    width: calc(95% / 5 - 40px);
-    padding: 20px;
-    margin: 10px 20px;
+    padding-top: 10px;
+    margin: 10px 15px;
     background-color: $app-light-gray;
-    min-height: 200px;
     .card_img {
         width: 100%;
         height: 0;
@@ -40,7 +38,7 @@ export default {
         h3 {
             color: white;
             text-transform: uppercase;
-            font-size: 18px;
+            font-size: 1em;
             margin-bottom: 10px;
         }
         p {
@@ -49,4 +47,5 @@ export default {
         }
     }
 }
+
 </style>

@@ -1,6 +1,10 @@
 <template>
     <section class="albums_list">
-        <AppAlbum v-for="(card, index) in albums" :key="index" :album="card"/>
+        <div class="container p-5">
+            <div class="row row-cols-3 row-cols-md-6 justify-content-center">
+                <AppAlbum v-for="(card, index) in albums" :key="index" :album="card"/>
+            </div>
+        </div>
     </section>
 </template>
 
@@ -31,13 +35,6 @@ export default {
 
 <style lang="scss" scoped>
 .albums_list {
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 80%;
 }
 </style>
