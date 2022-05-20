@@ -1,5 +1,6 @@
 <template>
     <section>
+        <AppGenreSelect @searchGenre="saveSelectedGenre($event)"/>
         <div v-if="loading" class="container my_load">
         <AppLoading />
         </div>
@@ -7,7 +8,7 @@
             <div class="albums_list py-4">
                 <div class="container">
                     <div class="row row-cols-3 row-cols-md-6 justify-content-center">
-                        <AppAlbum v-for="(card, index) in albums" :key="index" :album="card"/>
+                        <AppAlbum v-for="(card, index) in userSelectedGenre" :key="index" :album="card"/>
                     </div>
                 </div>
             </div>
@@ -18,6 +19,7 @@
 <script>
 import AppAlbum from "./AppAlbum.vue";
 import AppLoading from "./AppLoading.vue";
+import AppGenreSelect from "./AppGenreSelect";
 import axios from "axios";
 
 export default {
@@ -25,11 +27,13 @@ export default {
     components: {
         AppAlbum,
         AppLoading,
+        AppGenreSelect,
     },
     data: function() {
         return {
             albums: [],
             loading: true,
+            select: "",
         };
     },
     created() {
@@ -39,8 +43,22 @@ export default {
             this.albums = resp.data.response;
             this.loading = false;
         });
-    }
-
+    },
+    computed: {
+        userSelectedGenre: function() {
+            const keyFormatted = this.select.value;
+            const selectedGenre = this.albums.filter((card) => {
+                return card.genre.includes(keyFormatted);
+            });
+            console.log(keyFormatted);
+            return selectedGenre;
+        }
+    },
+    methods: {
+        saveSelectedGenre: function(selectKey) {
+            this.select = selectKey;
+        }
+    },
 }
 </script>
 
